@@ -1,7 +1,7 @@
 const Category = require("../models/category.model");
 
 module.exports.categoryController = {
-  addCategory: (req, res) => {
+  addCategory: async (req, res) => {
     try {
       await Category.create({ name: req.body.name });
       res.send("Категория добавлена!");
@@ -10,7 +10,7 @@ module.exports.categoryController = {
     }
   },
 
-  deleteCategory: (req, res) => {
+  deleteCategory: async (req, res) => {
     try {
       await Category.findByIdAndDelete(req.params.id);
       res.send("Категория удалена!");
@@ -19,7 +19,7 @@ module.exports.categoryController = {
     }
   },
 
-  changeCategory: (req, res) => {
+  changeCategory: async (req, res) => {
     try {
       await Category.findByIdAndUpdate(req.params.id);
       res.send("Категория была изменена!");

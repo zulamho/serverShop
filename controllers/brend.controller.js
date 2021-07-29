@@ -1,7 +1,7 @@
 const Brend = require("../models/Brend.model");
 
 module.exports.brendController = {
-  addBrend: (req, res) => {
+  addBrend: async (req, res) => {
     try {
       await Brend.create({
         name: req.body.name,
@@ -11,7 +11,7 @@ module.exports.brendController = {
       console.log(err);
     }
   },
-  changeBrend: (req, res) => {
+  changeBrend: async (req, res) => {
     try {
       await Brend.findById(req.params.id);
       res.send("Бренд  изменен!");
@@ -20,7 +20,7 @@ module.exports.brendController = {
     }
   },
 
-  deleteBrend: (req, res) => {
+  deleteBrend: async (req, res) => {
     try {
       await Brend.findByIdAndDelete(req.params.id);
       res.send("Бренд удален!");
